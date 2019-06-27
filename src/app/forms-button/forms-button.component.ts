@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 @Component({
   selector: "app-forms-button",
@@ -6,5 +6,5 @@ import { Component } from "@angular/core";
   styleUrls: ["./forms-button.component.css"]
 })
 export class FormsButtonComponent {
-  public label = "Log in";
+  @Input() public text: string = "Submit";
 }
