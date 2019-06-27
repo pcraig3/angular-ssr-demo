@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   templateUrl: "./login.component.html",
@@ -6,4 +7,8 @@ import { Component } from "@angular/core";
 })
 export class LoginComponent {
   public pageTitle = "Please log in";
+
+  public constructor(private titleService: Title) {
+    this.titleService.setTitle(`${this.pageTitle} — Claim tax benefits`);
+  }
 }
