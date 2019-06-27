@@ -1,0 +1,19 @@
+button {
+  font: 400 1em sans-serif;
+  line-height: 1.1875;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+  padding: 7px 10px;
+  border-radius: 0;
+  color: white;
+  background-color: #335075;
+  border: 2px solid #335075;
+  text-align: center;
+  vertical-align: top;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
