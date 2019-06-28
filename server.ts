@@ -52,23 +52,10 @@ app.get(
   })
 );
 
-// set cookie
-app.get("/cookie", (req, res) => {
-  let cookieValue = req.query.accessCode || "server hello";
-  res.cookie("accessCode", cookieValue);
-  res.send(`Set cookies.accessCode to ${cookieValue}!`);
-});
-
-// clear cookie
-app.get("/cookie/clear", (req, res) => {
-  res.clearCookie("accessCode");
-  res.send("Cleared cookies");
-});
-
 app.post("*", (req, res) => {
   let accessCode = req.body.accessCode || "";
-  // set access code from form in cookie
-  res.cookie("accessCode", accessCode);
+  // set access code from form in cookie (good for 10 minutes)
+  res.cookie("accessCode", accessCode, { maxAge: 600000 });
 
   if (accessCode && req.body.redirect) {
     return res.redirect(302, req.body.redirect);
