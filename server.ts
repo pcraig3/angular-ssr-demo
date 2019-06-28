@@ -15,7 +15,11 @@ enableProdMode();
 
 // Express server
 const app = express();
-app.use(cookieParser());
+app
+  .use(cookieParser())
+  // both of these are needed to parse post request params
+  .use(express.urlencoded({ extended: true }))
+  .use(express.json());
 
 const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), "dist/browser");
@@ -59,6 +63,18 @@ app.get("/cookie", (req, res) => {
 app.get("/cookie/clear", (req, res) => {
   res.clearCookie("accessCode");
   res.send("Cleared cookies");
+});
+
+app.post("*", (req, res) => {
+  let accessCode = req.body.accessCode || "";
+  // set access code from form in cookie
+  res.cookie("accessCode", accessCode);
+
+  if (accessCode && req.body.redirect) {
+    return res.redirect(302, req.body.redirect);
+  }
+
+  res.status(422).render("index", { req });
 });
 
 // All regular routes use the Universal engine
