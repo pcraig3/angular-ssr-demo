@@ -3,7 +3,6 @@
     {{ pageTitle }}
   </h2>
   <div>
-    <p>{{ cookie }}</p>
     <p>
       Please log in using your super cool <strong>access code</strong> you got
       in the mail.
@@ -12,7 +11,12 @@
     <form action="" method="get">
       <div>
         <label for="accessCode">Access code</label>
-        <input type="text" name="accessCode" id="accessCode" required />
+        <input
+          type="text"
+          name="accessCode"
+          id="accessCode"
+          value="{{ accessCode }}"
+        />
       </div>
       <div>
         <app-forms-button [text]="'Continue'"></app-forms-button>

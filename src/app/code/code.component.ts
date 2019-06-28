@@ -3,11 +3,11 @@ import { Title } from "@angular/platform-browser";
 import { CookieService } from "../cookie.service";
 
 @Component({
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.css"]
+  templateUrl: "./code.component.html",
+  styleUrls: ["./code.component.css"]
 })
-export class LoginComponent {
-  public pageTitle = "Please log in";
+export class CodeComponent {
+  public pageTitle = "Your access code";
   public accessCode: string;
 
   public constructor(
@@ -15,6 +15,6 @@ export class LoginComponent {
     private cookieService: CookieService
   ) {
     this.titleService.setTitle(`${this.pageTitle} — Claim tax benefits`);
-    this.accessCode = this.cookieService.get("accessCode") || "";
+    this.accessCode = this.cookieService.get("accessCode") || "123";
   }
 }

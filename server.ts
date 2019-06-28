@@ -50,14 +50,14 @@ app.get(
 
 // set cookie
 app.get("/cookie", (req, res) => {
-  let cookieValue = req.query.cookie || "server hello";
-  res.cookie("cookie", cookieValue);
-  res.send(`Set cookies.cookie to ${cookieValue}!`);
+  let cookieValue = req.query.accessCode || "server hello";
+  res.cookie("accessCode", cookieValue);
+  res.send(`Set cookies.accessCode to ${cookieValue}!`);
 });
 
 // clear cookie
 app.get("/cookie/clear", (req, res) => {
-  res.clearCookie("cookie");
+  res.clearCookie("accessCode");
   res.send("Cleared cookies");
 });
 

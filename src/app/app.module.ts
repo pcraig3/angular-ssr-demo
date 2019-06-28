@@ -8,6 +8,7 @@ import { HeaderComponent } from "./header/header.component";
 import { LoginComponent } from "./login/login.component";
 import { FormsButtonComponent } from "./forms-button/forms-button.component";
 import { CookieService } from "./cookie.service";
+import { CodeComponent } from './code/code.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CookieService } from "./cookie.service";
     WelcomeComponent,
     HeaderComponent,
     LoginComponent,
-    FormsButtonComponent
+    FormsButtonComponent,
+    CodeComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "serverApp" }),
