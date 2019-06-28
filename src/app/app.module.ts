@@ -7,6 +7,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { HeaderComponent } from "./header/header.component";
 import { LoginComponent } from "./login/login.component";
 import { FormsButtonComponent } from "./forms-button/forms-button.component";
+import { CookieService } from "./cookie.service";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { FormsButtonComponent } from "./forms-button/forms-button.component";
     BrowserModule.withServerTransition({ appId: "serverApp" }),
     AppRoutingModule
   ],
-  providers: [Title],
+  providers: [Title, CookieService, { provide: "req", useValue: null }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

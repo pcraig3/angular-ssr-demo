@@ -7,6 +7,7 @@ import { ngExpressEngine } from "@nguniversal/express-engine";
 import { provideModuleMap } from "@nguniversal/module-map-ngfactory-loader";
 
 import * as express from "express";
+import cookieParser from "cookie-parser";
 import { join } from "path";
 
 // Faster server renders w/ Prod mode (dev mode never needed)
@@ -14,6 +15,7 @@ enableProdMode();
 
 // Express server
 const app = express();
+app.use(cookieParser());
 
 const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), "dist/browser");
@@ -46,8 +48,22 @@ app.get(
   })
 );
 
+// set cookie
+app.get("/cookie", (req, res) => {
+  let cookieValue = req.query.cookie || "server hello";
+  res.cookie("cookie", cookieValue);
+  res.send(`Set cookies.cookie to ${cookieValue}!`);
+});
+
+// clear cookie
+app.get("/cookie/clear", (req, res) => {
+  res.clearCookie("cookie");
+  res.send("Cleared cookies");
+});
+
 // All regular routes use the Universal engine
 app.get("*", (req, res) => {
+  console.log(`req.cookies = ${JSON.stringify(req.cookies)}`);
   res.render("index", { req });
 });
 
